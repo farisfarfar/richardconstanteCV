@@ -1,0 +1,752 @@
+/* ==========================================================================
+   RESET, CONFIGURACIONES GLOBALES Y VARIABLES
+   ========================================================================== */
+:root {
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --bg-deep: #0b111e;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;         /* Celeste Neón Tecnológico */
+    --primary-hover: #0ea5e9;
+    --accent: #a855f7;          /* Violeta Inteligencia Artificial */
+    --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Deslizamiento suave por las secciones */
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+    padding-top: 70px; /* Evita que la navbar fija tape contenido */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Estilos de Botones Reutilizables */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(248, 250, 252, 0.2);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(248, 250, 252, 0.05);
+    border-color: var(--text-main);
+    transform: translateY(-2px);
+}
+
+/* Encabezados de Sección Reutilizables */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.section-description {
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   1. NAVBAR (Navegación Fija Glassmorphism)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(248, 250, 252, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-btn {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--primary) !important;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary);
+    color: var(--bg-dark) !important;
+}
+
+/* ==========================================================================
+   2. HERO SECTION
+   ========================================================================== */
+.hero {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4rem 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-badge {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Canvas e Ilustración de Código */
+.hero-visual {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-canvas {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    opacity: 0.35;
+}
+
+.blob-1 { top: 10%; left: 10%; width: 200px; height: 200px; background-color: var(--primary); }
+.blob-2 { bottom: 10%; right: 10%; width: 220px; height: 220px; background-color: var(--accent); }
+
+.profile-card {
+    position: relative;
+    z-index: 2;
+    background-color: var(--bg-card);
+    border: 1px solid rgba(248, 250, 252, 0.06);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: rgba(15, 23, 42, 0.6);
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(248, 250, 252, 0.05);
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.red { background-color: #ef4444; }
+.dot.yellow { background-color: #f59e0b; }
+.dot.green { background-color: #10b981; }
+
+.card-body {
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+}
+
+.code-keyword { color: #f472b6; }
+.code-string { color: #34d399; }
+.code-boolean { color: #fb923c; }
+
+/* ==========================================================================
+   3. SKILLS SECTION
+   ========================================================================== */
+.skills-section {
+    padding: 6rem 0;
+    background-color: var(--bg-dark);
+}
+
+.category-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 3.5rem 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(248, 250, 252, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+}
+
+.secondary-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.skill-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(248, 250, 252, 0.03);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.15);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.main-tech { border-left: 4px solid var(--primary); }
+.active-learning { border-left: 4px solid var(--accent); }
+
+.learning-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: rgba(168, 85, 247, 0.15);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.icon-web { background-color: rgba(56, 189, 248, 0.1); color: var(--primary); }
+.icon-ai { background-color: rgba(168, 85, 247, 0.1); color: var(--accent); }
+.icon-design { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.icon-hardware { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+.skill-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.skill-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(248, 250, 252, 0.05);
+    color: var(--text-main);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   4. PROJECTS SECTION
+   ========================================================================== */
+.projects-section {
+    padding: 6rem 0;
+    background-color: var(--bg-deep);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: var(--bg-card);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(248, 250, 252, 0.03);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(168, 85, 247, 0.2);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+.project-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    font-size: 3.5rem;
+    color: rgba(248, 250, 252, 0.15);
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.project-card:hover .image-placeholder {
+    transform: scale(1.1) rotate(2deg);
+    color: var(--primary);
+}
+
+.project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.project-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech span {
+    background-color: rgba(15, 23, 42, 0.6);
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(248, 250, 252, 0.02);
+}
+
+.project-links {
+    border-top: 1px solid rgba(248, 250, 252, 0.05);
+    padding-top: 1rem;
+}
+
+.project-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.project-link:hover { color: var(--accent); }
+
+/* ==========================================================================
+   5. ABOUT ME SECTION
+   ========================================================================== */
+.about-section {
+    padding: 6rem 0;
+    background-color: var(--bg-dark);
+}
+
+.about-card-wrapper {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(248, 250, 252, 0.03);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-lead {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+.about-body {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Caja Especial Hobby (FL Studio) */
+.hobby-box {
+    background-color: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(248, 250, 252, 0.04);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.hobby-icon {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.hobby-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. CONTACT SECTION
+   ========================================================================== */
+.contact-section {
+    padding: 6rem 0;
+    background-color: var(--bg-deep);
+}
+
+.contact-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    border-radius: 24px;
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.contact-badge {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.contact-card h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.contact-card p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 550px;
+    margin: 0 auto 2.5rem auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================================================== */
+@media (max-width: 968px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    .hero-description { margin: 0 auto 2.5rem auto; }
+    .hero-actions { justify-content: center; }
+    .tech-canvas { margin: 0 auto; max-width: 350px; }
+    
+    .skills-grid, .secondary-grid {
+        grid-template-columns: 1fr;
+    }
+    .learning-badge {
+        position: static;
+        display: inline-block;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body { padding-top: 60px; }
+    .nav-links { display: none; } /* Oculta navegación en móviles */
+    .section-title { font-size: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .about-card-wrapper { padding: 2rem 1.5rem; }
+    .hobby-box { flex-direction: column; text-align: center; }
+    .contact-card h2 { font-size: 1.75rem; }
+}
+
+
+/* ==========================================================================
+   SISTEMA DE ANIMACIONES CSS
+   ========================================================================== */
+
+/* --- 1. Animación de Entrada Suave (Fade-In-Up) --- */
+.anim-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Delays para que los elementos aparezcan en orden secuencial */
+.anim-delay-1 { animation-delay: 0.2s; }
+.anim-delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 2. Animación de Flotado Orgánico (Para los círculos de luz) --- */
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-reverse {
+    animation: floatReverse 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.05); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0) scale(1.05); }
+    50% { transform: translateY(15px) scale(0.95); }
+}
+
+/* --- 3. Efecto de Simulación de Escritura de Código --- */
+.typing-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: pre; /* Mantiene los saltos de línea del objeto */
+    border-right: 2px solid var(--primary); /* Cursor parpadeante */
+    animation: typing 3.5s steps(40, end) forwards,
+               blink 0.75s step-end infinite;
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { max-height: 0; width: 0; }
+    to { max-height: 300px; width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary); }
+}
+
+/* --- 4. Microinteracciones con las Tarjetas de Habilidades y Proyectos --- */
+/* (Hacemos que cuando pases el mouse, el icono reaccione de forma divertida) */
+.skill-card:hover .card-icon,
+.project-card:hover .image-placeholder {
+    animation: popIcon 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15) rotate(5deg); }
+    100% { transform: scale(1.1) rotate(0deg); }
+}
+
+/* ==========================================================================
+   INTEGRACIÓN DE SPOTIFY
+   ========================================================================== */
+
+.spotify-wrapper {
+    margin-top: 25px;
+    width: 100%;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Estilos para el Widget incrustado de Spotify */
+.spotify-wrapper iframe {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spotify-wrapper iframe:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(29, 185, 84, 0.15); /* Sutil brillo verde Spotify */
+}
+
+/* Estilos alternativos para la Opción B (El Botón) */
+.btn-spotify {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #1DB954; /* Verde corporativo de Spotify */
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.2);
+}
+
+.btn-spotify:hover {
+    background-color: #1ed760;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+}
+
+.btn-spotify i {
+    font-size: 1.3rem;
+}
