@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richard Constante — Ingeniero en Sistemas de Información</title>
+  <meta name="description"
+    content="Portafolio profesional de Richard Constante Cacuango, Ingeniero en Sistemas de Información especializado en desarrollo web, análisis de datos y soporte técnico.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="ledger-progress" id="ledgerProgress"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#inicio" class="logo">RC<span class="logo-dot">·</span></a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+        <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#experiencia" class="nav-link">Experiencia</a>
+        <a href="#habilidades" class="nav-link">Habilidades</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+
+      <a href="#contacto" class="btn btn-small btn-outline header-cta">Contactar</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <p class="eyebrow reveal">Ingeniero en Sistemas de Información · Ecuador</p>
+        <h1 class="hero-title reveal">
+          Richard<br>
+          Constante<span class="accent-dot">.</span>
+        </h1>
+        <p class="hero-lede reveal">
+          Diseño y construyo sistemas web que ponen en orden los números:
+          registros de caja, cobros y datos que cuadran hasta el último centavo.
+        </p>
+
+        <div class="ledger-rule reveal" aria-hidden="true"></div>
+
+        <div class="hero-split reveal">
+          <a href="#proyectos" class="hero-column">
+            <span class="hero-column-index">01</span>
+            <span class="hero-column-title">Desarrollo web &amp; PWA</span>
+            <span class="hero-column-stack">Laravel · MySQL · JavaScript</span>
+          </a>
+          <a href="#habilidades" class="hero-column">
+            <span class="hero-column-index">02</span>
+            <span class="hero-column-title">Datos &amp; soporte técnico</span>
+            <span class="hero-column-stack">SQL · Power BI · Redes LAN</span>
+          </a>
+        </div>
+
+        <div class="hero-actions reveal">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contacto" class="btn btn-outline">Hablemos</a>
+        </div>
+
+        <p class="hero-location reveal">📍 Salcedo, Cotopaxi, Ecuador — Disponible para movilidad nacional</p>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="section" id="sobre-mi">
+      <div class="section-inner">
+        <p class="section-label reveal">Sobre mí</p>
+        <h2 class="section-title reveal">Diseñar, Construir y Optimizar.</h2>
+        <div class="about-grid reveal">
+          <p class="about-text">
+            Soy Ingeniero en Sistemas de Información, titulado por la Universidad Técnica
+            de Cotopaxi. Me enfoco en análisis de datos, gestión
+            de sistemas y soporte técnico para el sector financiero e institucional.
+          </p>
+          <p class="about-text">
+            Tengo experiencia práctica desarrollando aplicaciones web progresivas (PWA)
+            conectadas a bases de datos relacionales, pensadas para el control transaccional,
+            la gestión de cajas y la recaudación de servicios. Soy competente en desarrollo
+            web con HTML5, CSS3 y JavaScript, además del diagnóstico de hardware y soporte
+            técnico integral.
+          </p>
+          <p class="about-text">
+            Sigo en constante actualización: SQL, Python y Power BI son mis próximos frentes,
+            siempre con la misma meta — optimizar procesos operativos, cuadre transaccional
+            y atención al usuario.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section section-alt" id="proyectos">
+      <div class="section-inner">
+        <p class="section-label reveal">Proyectos</p>
+        <h2 class="section-title reveal">Algo de mi trabajo reciente</h2>
+
+        <div class="projects-grid">
+
+          <article class="project-card reveal">
+            <div class="project-card-head">
+              <span class="project-tag">Proyecto de titulación</span>
+            </div>
+            <h3 class="project-title">Sistema PWA de Gestión de Caja y Recaudaciones</h3>
+            <p class="project-subtitle">Universidad Técnica de Cotopaxi (UTC)</p>
+            <p class="project-desc">
+              Aplicación Web Progresiva para automatizar el flujo de caja y el registro de
+              cobranzas multiservicio: pago de servicios básicos, matriculación vehicular y
+              trámites administrativos.
+            </p>
+            <ul class="project-bullets">
+              <li>Automatización del registro de cobros y reportes de ingresos/egresos.</li>
+              <li>Optimización del control de auditoría en los arqueos de caja.</li>
+            </ul>
+            <div class="project-stack">
+              <span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-card-head">
+              <span class="project-tag">Frontend &amp; despliegue</span>
+            </div>
+            <h3 class="project-title">Portafolio Web Profesional</h3>
+            <p class="project-subtitle">Desarrollo frontend e infraestructura</p>
+            <p class="project-desc">
+              Diseño y despliegue de una plataforma web responsive para exhibir de forma
+              estructurada mis proyectos informáticos, credenciales académicas y repositorio
+              de código.
+            </p>
+            <ul class="project-bullets">
+              <li>Diseño responsive construido desde cero, sin frameworks de CSS.</li>
+              <li>Publicado y versionado con GitHub Pages.</li>
+            </ul>
+            <div class="project-stack">
+              <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span>
+            </div>
+            <a href="https://farisfarfar.github.io/richardconstanteCV/#" class="project-link" target="_blank"
+              rel="noopener">Ver repositorio ↗</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="section" id="experiencia">
+      <div class="section-inner">
+        <p class="section-label reveal">Experiencia</p>
+        <h2 class="section-title reveal">Historial laboral</h2>
+
+        <div class="ledger">
+
+          <div class="ledger-entry reveal">
+            <div class="ledger-date">04/2026 — 07/2026</div>
+            <div class="ledger-content">
+              <h3 class="ledger-role">Asesor de Ventas Tecnológicas y Asistente de Soporte Técnico</h3>
+              <p class="ledger-company">Portugal Cell — Salcedo, Cotopaxi</p>
+              <ul class="ledger-bullets">
+                <li>Diagnóstico de primer nivel en dispositivos móviles e informáticos, con bitácoras de registro
+                  técnico y control de entrada/salida.</li>
+                <li>Administración de operaciones y transacciones diarias: cobros en efectivo, comprobantes de
+                  transferencia y gestión de solicitudes de crédito.</li>
+                <li>Asesoría técnica personalizada, traduciendo requerimientos técnicos a un lenguaje accesible para el
+                  cliente.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ledger-entry reveal">
+            <div class="ledger-date">2025</div>
+            <div class="ledger-content">
+              <h3 class="ledger-role">Asistente de Soporte Técnico y Redes (Prácticas Preprofesionales)</h3>
+              <p class="ledger-company">Colegio Fiscal / Universidad Técnica de Cotopaxi — Latacunga, Cotopaxi</p>
+              <ul class="ledger-bullets">
+                <li>Mantenimiento preventivo y correctivo del parque informático y laboratorios de cómputo.</li>
+                <li>Instalación, configuración y actualización de software utilitario, sistemas operativos y Microsoft
+                  Office.</li>
+                <li>Conectividad física: ponchado de cables UTP (RJ45), reemplazo de conectores y verificación de puntos
+                  Wi-Fi.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ledger-entry reveal">
+            <div class="ledger-date">12/2025 — 03/2026</div>
+            <div class="ledger-content">
+              <h3 class="ledger-role">Auxiliar de Diseño y Publicidad Visual</h3>
+              <p class="ledger-company">Graficar — Cayambe, Pichincha</p>
+              <ul class="ledger-bullets">
+                <li>Atención al cliente y diseño publicitario mediante software gráfico para artes visuales e
+                  impresiones a gran escala.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="section section-alt" id="habilidades">
+      <div class="section-inner">
+        <p class="section-label reveal">Habilidades</p>
+        <h2 class="section-title reveal">Con qué trabajo</h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group-title">Bases de datos &amp; backend</h3>
+            <div class="skill-tags">
+              <span>MySQL</span><span>SQL Server <small>(en
+                  formación)</small></span><span>PHP</span><span>Laravel</span><span>Python
+                <small>(básico)</small></span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group-title">Desarrollo web &amp; frontend</h3>
+            <div class="skill-tags">
+              <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>WordPress CMS</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group-title">Herramientas &amp; análisis</h3>
+            <div class="skill-tags">
+              <span>Excel</span><span>Power BI</span><span>Git</span><span>GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3 class="skill-group-title">Soporte &amp; infraestructura</h3>
+            <div class="skill-tags">
+              <span>Diagnóstico de hardware</span><span>Mantenimiento de PC</span><span>Redes LAN
+                (UTP/RJ45)</span><span>Mesa de ayuda</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="edu-cert-grid">
+          <div class="edu-block reveal">
+            <h3 class="edu-block-title">Educación</h3>
+            <p class="edu-item-title">Ingeniero en Sistemas de Información</p>
+            <p class="edu-item-sub">Universidad Técnica de Cotopaxi (UTC) — Latacunga, Ecuador</p>
+            <p class="edu-item-date">Agosto 2025 · Registrado en SENESCYT</p>
+          </div>
+
+          <div class="edu-block reveal">
+            <h3 class="edu-block-title">Certificaciones</h3>
+            <p class="edu-item-title">Diagnóstico y Reparación de Dispositivos Móviles</p>
+            <p class="edu-item-sub">Repara Pro — Ambato, 2026</p>
+            <p class="edu-item-title" style="margin-top: 0.75rem;">WordPress Desarrollo Web</p>
+            <p class="edu-item-sub">Udemy — 2026</p>
+          </div>
+
+          <div class="edu-block reveal">
+            <h3 class="edu-block-title">Idiomas</h3>
+            <div class="lang-row"><span>Español</span><span class="lang-level">Nativo</span></div>
+            <div class="lang-row"><span>Inglés</span><span class="lang-level">Intermedio B1</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section contact-section" id="contacto">
+      <div class="section-inner">
+        <p class="section-label reveal">Contacto</p>
+        <h2 class="section-title reveal">Conversemos sobre tu próximo proyecto.</h2>
+        <p class="contact-lede reveal">
+          Estoy disponible para movilidad nacional y abierto a nuevas oportunidades
+          en desarrollo web, análisis de datos y soporte técnico.
+        </p>
+
+        <div class="contact-main reveal">
+          <button class="email-copy" id="emailCopy" data-email="richardconstanteplus@outlook.com">
+            <span id="emailText">richardconstanteplus@outlook.com</span>
+            <span class="copy-hint" id="copyHint">Copiar</span>
+          </button>
+        </div>
+
+        <div class="contact-links reveal">
+          <a href="tel:+593998854605" class="contact-link">
+            <span class="contact-link-label">Teléfono</span>
+            <span class="contact-link-value">+593 99 885 4605</span>
+          </a>
+          <a href="https://linkedin.com/in/richard-constante-99a33a418" class="contact-link" target="_blank"
+            rel="noopener">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">richard-constante ↗</span>
+          </a>
+          <a href="https://github.com/farisfarfar" class="contact-link" target="_blank" rel="noopener">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">farisfarfar ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Richard Constante Cacuango</p>
+      <a href="#inicio" class="back-to-top">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

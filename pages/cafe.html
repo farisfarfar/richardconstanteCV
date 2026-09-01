@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altura — Café de Origen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --volcanica: #241f1b;
+    --volcanica-2: #2f2820;
+    --pergamino: #efe6d6;
+    --pergamino-2: #e4d8c2;
+    --arcilla: #a8532e;
+    --arcilla-luz: #c56a41;
+    --musgo: #5c6b47;
+    --oro: #c9a15c;
+    --texto-claro: #f4ede1;
+    --texto-oscuro: #241f1b;
+    --texto-suave: #6b6255;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--pergamino);
+    color:var(--texto-oscuro);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  ::selection{background:var(--arcilla); color:var(--texto-claro);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(36,31,27,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(244,237,225,0.08);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    color:var(--texto-claro);
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .mark{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--arcilla);
+    box-shadow:0 0 0 3px rgba(168,83,46,0.25);
+  }
+  .nav-links{
+    display:flex; gap:36px; list-style:none;
+  }
+  .nav-links a{
+    color:var(--pergamino-2);
+    font-size:14px; font-weight:500;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    position:relative;
+    padding-bottom:4px;
+    transition:color .2s ease;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; bottom:0; left:0; width:0; height:1px;
+    background:var(--arcilla-luz); transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--texto-claro);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--arcilla); color:var(--texto-claro);
+    padding:10px 22px; border-radius:2px;
+    font-size:13px; font-weight:600; letter-spacing:0.04em;
+    text-transform:uppercase;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .nav-cta:hover{background:var(--arcilla-luz); transform:translateY(-1px);}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px;}
+  .burger span{width:22px; height:2px; background:var(--pergamino);}
+  @media(max-width:860px){
+    .nav-links, .nav-cta{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--volcanica);
+    color:var(--texto-claro);
+    display:flex; align-items:center;
+    padding-top:90px;
+    overflow:hidden;
+  }
+  .hero-contours{
+    position:absolute; inset:0; opacity:0.35; pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.7fr; gap:60px; align-items:center;
+    width:100%; position:relative; z-index:2;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    color:var(--oro); font-size:13px; letter-spacing:0.12em; text-transform:uppercase;
+    margin-bottom:22px;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--oro);}
+  .hero h1{
+    font-size:clamp(40px, 6vw, 74px);
+    max-width:11.5ch;
+    margin-bottom:26px;
+  }
+  .hero h1 em{color:var(--arcilla-luz); font-style:normal;}
+  .hero p.lead{
+    font-size:18px; color:var(--pergamino-2); max-width:46ch; margin-bottom:36px; line-height:1.6;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--arcilla); color:var(--texto-claro);
+    padding:15px 30px; border-radius:2px; font-weight:600; font-size:14px;
+    letter-spacing:0.03em; text-transform:uppercase;
+    transition:background .2s ease, transform .2s ease;
+    border:1px solid var(--arcilla);
+  }
+  .btn-primary:hover{background:var(--arcilla-luz); transform:translateY(-2px);}
+  .btn-ghost{
+    padding:15px 30px; border-radius:2px; font-weight:600; font-size:14px;
+    letter-spacing:0.03em; text-transform:uppercase;
+    border:1px solid rgba(244,237,225,0.3); color:var(--texto-claro);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--texto-claro); background:rgba(244,237,225,0.06);}
+
+  /* Altitude gauge — signature element */
+  .gauge{
+    position:relative;
+    padding-left:38px;
+    justify-self:center;
+  }
+  .gauge-line{
+    position:absolute; left:10px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(to bottom, transparent, rgba(244,237,225,0.35) 10%, rgba(244,237,225,0.35) 90%, transparent);
+  }
+  .gauge-item{
+    position:relative; padding:20px 0 20px 20px; opacity:0;
+    animation:fadeUp .7s ease forwards;
+  }
+  .gauge-item:nth-child(2){animation-delay:.15s;}
+  .gauge-item:nth-child(3){animation-delay:.3s;}
+  .gauge-item:nth-child(4){animation-delay:.45s;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .gauge-item::before{
+    content:''; position:absolute; left:-31px; top:26px; width:9px; height:9px;
+    border-radius:50%; background:var(--oro); box-shadow:0 0 0 4px rgba(201,161,92,0.18);
+  }
+  .gauge-alt{font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--oro); letter-spacing:0.02em;}
+  .gauge-place{font-family:'Fraunces', serif; font-size:19px; margin-top:3px;}
+  .gauge-note{font-size:13px; color:var(--pergamino-2); margin-top:4px; max-width:26ch;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:120px 0;}
+  @media(max-width:640px){.section{padding:80px 0;}}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:64px; flex-wrap:wrap;
+  }
+  .section-eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--arcilla); margin-bottom:14px;
+  }
+  .section-head h2{font-size:clamp(30px,4vw,46px); max-width:14ch;}
+  .section-head p{max-width:34ch; color:var(--texto-suave); font-size:15px; line-height:1.6;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- PRODUCTOS ---------- */
+  .productos{background:var(--pergamino);}
+  .tabs{display:flex; gap:10px; margin-bottom:44px; flex-wrap:wrap;}
+  .tab{
+    padding:9px 18px; border:1px solid rgba(36,31,27,0.18); border-radius:20px;
+    font-size:13px; font-weight:500; cursor:pointer; background:transparent;
+    transition:all .2s ease;
+  }
+  .tab.active, .tab:hover{background:var(--volcanica); color:var(--texto-claro); border-color:var(--volcanica);}
+  .product-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+    background:rgba(36,31,27,0.12);
+  }
+  @media(max-width:860px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.product-grid{grid-template-columns:1fr;}}
+  .product-card{
+    background:var(--pergamino); padding:34px 28px; position:relative;
+    transition:background .3s ease;
+    display:flex; flex-direction:column; min-height:230px;
+  }
+  .product-card:hover{background:var(--pergamino-2);}
+  .product-tag{
+    font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--musgo);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px;
+  }
+  .product-card h3{font-size:22px; margin-bottom:10px;}
+  .product-card p{font-size:14px; color:var(--texto-suave); line-height:1.55; flex:1;}
+  .product-price{
+    display:flex; justify-content:space-between; align-items:center; margin-top:20px;
+    padding-top:16px; border-top:1px solid rgba(36,31,27,0.1);
+  }
+  .product-price .price{font-family:'JetBrains Mono', monospace; font-size:16px; color:var(--arcilla); font-weight:500;}
+  .product-price .origin{font-size:12px; color:var(--texto-suave);}
+
+  /* ---------- MISION VISION ---------- */
+  .mv{background:var(--volcanica); color:var(--texto-claro);}
+  .mv .section-eyebrow{color:var(--oro);}
+  .mv-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(244,237,225,0.12); margin-top:20px;}
+  @media(max-width:760px){.mv-grid{grid-template-columns:1fr;}}
+  .mv-card{background:var(--volcanica-2); padding:48px 40px;}
+  .mv-num{font-family:'JetBrains Mono', monospace; color:var(--arcilla-luz); font-size:13px; margin-bottom:20px; display:block;}
+  .mv-card h3{font-size:28px; margin-bottom:18px;}
+  .mv-card p{color:var(--pergamino-2); line-height:1.7; font-size:15.5px;}
+  .values{display:flex; gap:40px; margin-top:60px; flex-wrap:wrap;}
+  .value{max-width:220px;}
+  .value h4{font-size:16px; color:var(--oro); margin-bottom:8px; font-weight:600;}
+  .value p{font-size:13.5px; color:var(--pergamino-2); line-height:1.6;}
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{background:var(--pergamino);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr; gap:50px;}}
+  .info-block{margin-bottom:32px;}
+  .info-block h4{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--arcilla); margin-bottom:8px;
+  }
+  .info-block p, .info-block a{font-size:16px; line-height:1.6; color:var(--texto-oscuro);}
+  .socials{display:flex; gap:16px; margin-top:8px;}
+  .socials a{
+    width:40px; height:40px; border:1px solid rgba(36,31,27,0.2); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+    transition:all .2s ease;
+  }
+  .socials a:hover{background:var(--volcanica); color:var(--texto-claro); border-color:var(--volcanica);}
+
+  form{display:flex; flex-direction:column; gap:18px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field label{font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--texto-suave); font-weight:500;}
+  .field input, .field textarea{
+    background:transparent; border:none; border-bottom:1px solid rgba(36,31,27,0.25);
+    padding:10px 2px; font-family:'Work Sans', sans-serif; font-size:15px; color:var(--texto-oscuro);
+    outline:none; transition:border-color .2s ease;
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--arcilla);}
+  .field textarea{resize:vertical; min-height:90px;}
+  .submit-btn{
+    align-self:flex-start; margin-top:8px; background:var(--volcanica); color:var(--texto-claro);
+    padding:14px 32px; border-radius:2px; font-size:13px; font-weight:600; letter-spacing:0.04em;
+    text-transform:uppercase; border:none; cursor:pointer; transition:background .2s ease, transform .2s ease;
+  }
+  .submit-btn:hover{background:var(--arcilla); transform:translateY(-2px);}
+  .form-note{font-size:13px; color:var(--musgo); margin-top:10px; min-height:16px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--volcanica); color:var(--pergamino-2); padding:50px 0 30px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; padding-bottom:30px; border-bottom:1px solid rgba(244,237,225,0.1);}
+  footer .logo{margin-bottom:0;}
+  .foot-links{display:flex; gap:28px; list-style:none;}
+  .foot-links a{font-size:14px; color:var(--pergamino-2); transition:color .2s ease;}
+  .foot-links a:hover{color:var(--texto-claro);}
+  .copy{padding-top:24px; font-size:12.5px; color:rgba(244,237,225,0.5); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="mark"></span>ALTURA</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#nosotros">Misión y visión</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Visítanos</a>
+    <button class="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ---------- HERO / INICIO ---------- -->
+<section class="hero" id="inicio">
+  <svg class="hero-contours" viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-50,650 Q300,500 600,600 T1250,550" stroke="#c9a15c" stroke-width="1" fill="none"/>
+    <path d="M-50,700 Q300,560 600,660 T1250,610" stroke="#c9a15c" stroke-width="1" fill="none"/>
+    <path d="M-50,750 Q300,620 600,720 T1250,670" stroke="#a8532e" stroke-width="1" fill="none"/>
+    <path d="M-50,600 Q300,440 600,540 T1250,490" stroke="#f4ede1" stroke-width="0.6" fill="none"/>
+    <path d="M-50,550 Q300,380 600,480 T1250,430" stroke="#f4ede1" stroke-width="0.6" fill="none"/>
+  </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Tungurahua, Ecuador · 1 850 msnm</div>
+      <h1>Café cultivado donde <em>nace la niebla</em></h1>
+      <p class="lead">Tostamos en pequeños lotes granos de altura de las laderas andinas: cada taza guarda el clima, el suelo volcánico y las manos que lo cosecharon.</p>
+      <div class="hero-actions">
+        <a href="#productos" class="btn-primary">Ver la carta</a>
+        <a href="#nosotros" class="btn-ghost">Nuestra historia</a>
+      </div>
+    </div>
+    <div class="gauge">
+      <div class="gauge-line"></div>
+      <div class="gauge-item">
+        <div class="gauge-alt">2 100 msnm</div>
+        <div class="gauge-place">Chimborazo</div>
+        <div class="gauge-note">Notas florales, acidez cítrica marcada</div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-alt">1 850 msnm</div>
+        <div class="gauge-place">Tungurahua</div>
+        <div class="gauge-note">Cuerpo medio, panela y frutos rojos</div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-alt">1 600 msnm</div>
+        <div class="gauge-place">Intag</div>
+        <div class="gauge-note">Chocolate oscuro, final largo</div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-alt">1 300 msnm</div>
+        <div class="gauge-place">Zamora</div>
+        <div class="gauge-note">Dulzor a caña, cuerpo suave</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- PRODUCTOS ---------- -->
+<section class="section productos" id="productos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">La carta</div>
+        <h2>Cada lote, un origen distinto</h2>
+      </div>
+      <p>Rotamos la selección según la cosecha. Todo se muele y se sirve el mismo día de tueste.</p>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab active">Todo</button>
+      <button class="tab">Café</button>
+      <button class="tab">Frío</button>
+      <button class="tab">De hornear</button>
+    </div>
+
+    <div class="product-grid reveal">
+      <div class="product-card">
+        <div class="product-tag">Espresso</div>
+        <h3>Espresso Chimborazo</h3>
+          <img src="../images/Café_de_Origen.jpeg" alt="">    
+        <p>Extracción corta de finca única a 2 100 msnm. Acidez viva, cuerpo sedoso, final a mandarina.</p>
+        <img src="" alt="">
+        <div class="product-price"><span class="price mono">$2.80</span><span class="origin">Chimborazo · 2 100m</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">Leche + café</div>
+        <h3>Flat White de Tungurahua</h3>
+          <img src="../images/Cold_Brew_de_Zamora.jpeg" alt="">    
+        <p>Doble espresso con leche vaporizada a baja temperatura para conservar el dulzor natural del grano.</p>
+        <div class="product-price"><span class="price mono">$3.60</span><span class="origin">Tungurahua · 1 850m</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">Filtrado</div>
+        <h3>V60 Intag</h3>
+          <img src="../images/Flat_White.jpeg" alt="">    
+        <p>Método por goteo, preparado a la vista. Notas a cacao amargo y panela tostada.</p>
+        <div class="product-price"><span class="price mono">$3.20</span><span class="origin">Intag · 1 600m</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">Frío</div>
+        <h3>Cold Brew de Zamora</h3>
+          <img src="../images/Flat_White2.jpeg" alt="">    
+        <p>Infusión en frío durante 16 horas. Suave, con dulzor natural a caña y casi sin acidez.</p>
+        <div class="product-price"><span class="price mono">$3.40</span><span class="origin">Zamora · 1 300m</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">De hornear</div>
+        <h3>Pan de yuca con queso</h3>
+          <img src="../images/Pan_de_yuca.jpeg" alt="">    
+        <p>Horneado cada mañana. Compañero clásico del café de media tarde.</p>
+        <div class="product-price"><span class="price mono">$1.90</span><span class="origin">Horno propio</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">De hornear</div>
+        <h3>Torta de choclo y café</h3>
+          <img src="../images/Torta_choclo.jpeg" alt="">    
+        <p>Receta de la casa: choclo tierno, un toque de café molido y canela.</p>
+        <div class="product-price"><span class="price mono">$2.50</span><span class="origin">Horno propio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- MISION Y VISION ---------- -->
+<section class="section mv" id="nosotros">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Quiénes somos</div>
+        <h2>De la ladera a la taza</h2>
+      </div>
+      <p>Trabajamos directo con caficultores de las estribaciones andinas, sin intermediarios.</p>
+    </div>
+
+    <div class="mv-grid reveal">
+      <div class="mv-card">
+        <span class="mv-num mono">MISIÓN</span>
+        <h3>Acercar el café de altura a cada persona</h3>
+        <p>Tostamos y servimos café de origen ecuatoriano pagando precios justos a los productores, cuidando cada paso desde la finca hasta la taza, para que quien nos visita pruebe el verdadero carácter de nuestros suelos volcánicos.</p>
+      </div>
+      <div class="mv-card">
+        <span class="mv-num mono">VISIÓN</span>
+        <h3>Ser referente del café de especialidad andino</h3>
+        <p>Aspiramos a que Altura sea reconocida en Ecuador y la región como el puente entre las comunidades caficultoras de altura y una nueva generación que valora el origen, la trazabilidad y el buen tueste.</p>
+      </div>
+    </div>
+
+    <div class="values reveal">
+      <div class="value">
+        <h4>Trazabilidad</h4>
+        <p>Sabemos el nombre de la finca y la altitud exacta de cada saco que tostamos.</p>
+      </div>
+      <div class="value">
+        <h4>Comercio directo</h4>
+        <p>Compramos en finca, sin intermediarios, a precios superiores al mercado.</p>
+      </div>
+      <div class="value">
+        <h4>Tueste en casa</h4>
+        <p>Lotes pequeños, tostados dos veces por semana para máxima frescura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- CONTACTO ---------- -->
+<section class="section contacto" id="contacto">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-eyebrow">Visítanos</div>
+        <h2>Conversemos</h2>
+      </div>
+      <p>Escríbenos para reservas, eventos privados o para conocer nuestra selección actual.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div>
+        <div class="info-block">
+          <h4>Dirección</h4>
+          <p>Av. Cevallos y Vicente Rocafuerte<br>Ambato, Tungurahua, Ecuador</p>
+        </div>
+        <div class="info-block">
+          <h4>Horario</h4>
+          <p>Lunes a sábado, 7:30 am – 8:00 pm<br>Domingo, 9:00 am – 2:00 pm</p>
+        </div>
+        <div class="info-block">
+          <h4>Contacto</h4>
+          <p><a href="mailto:hola@alturacafe.ec">hola@alturacafe.ec</a><br><a href="tel:+593998854605">+593 99 999 9999</a></p>
+        </div>
+        <div class="info-block">
+          <h4>Síguenos</h4>
+          <div class="socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="TikTok">TT</a>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Tu nombre" required>
+        </div>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input id="email" type="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" placeholder="Cuéntanos en qué podemos ayudarte" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar mensaje</button>
+        <div class="form-note" id="formNote"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="logo"><span class="mark"></span>ALTURA</div>
+      <ul class="foot-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#nosotros">Misión y visión</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="copy wrap" style="padding-left:0; padding-right:0;">
+      <span>© 2026 Altura Café de Origen. Todos los derechos reservados.</span>
+      <span>Ambato, Ecuador</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menú móvil
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  const navCta = document.querySelector('.nav-cta');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navCta.style.display = open ? 'none' : 'inline-block';
+    if(!open){
+      navLinks.style.cssText = 'display:flex; flex-direction:column; gap:16px; position:absolute; top:64px; left:0; right:0; background:#241f1b; padding:24px 32px;';
+      navCta.style.cssText = 'display:inline-block; margin:0 32px 20px; position:absolute; top:210px;';
+    }
+  });
+
+  // Tabs de productos (visual únicamente)
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Revelado al hacer scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Formulario de contacto (demostrativo)
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    note.textContent = 'Gracias — te responderemos en menos de 24 horas.';
+    note.style.color = '#5c6b47';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
