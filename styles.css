@@ -516,6 +516,10 @@ img {
   border-radius: 6px;
 }
 
+.project-stack span:hover {
+  background-color: #e9c98a;
+}
+
 .project-link {
   margin-top: 0.4rem;
   font-weight: 600;
